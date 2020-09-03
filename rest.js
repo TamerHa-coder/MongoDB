@@ -87,71 +87,8 @@ app.delete('/api/tutorials/:id',async (req, res) =>{
     }
  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.patch('/Tutorial/:id',async (req, res) =>{
-//     try{
-//          const result = await Tutorial.update({_id: req.params.id},{$set: {title: 'moti shmoti'}});
-//          res.send(result);
-//     } catch (err) {
-//         res.status(400).send(err.message);
-//     }
-//  });
-
- app.patch('/Tutorial/:id',async (req, res) =>{
-    try{
-         const result = await Tutorial.update({_id: req.params.id},{$set: req.body});
-         res.send(result);
-    } catch (err) {
-        res.status(400).send(err.message);
-    }
- });
-
- 
-
-
-
-
-
-app.get('/TutorialsBytitle/:title', async (req, res) =>{
-    try{
-        const Tutorial = await Tutorial.findOne({title: req.params.title});
-        res.send(Tutorial)
-    } catch (err) {
-        res.status(400).send(err.message);
-    }
-});
-
-
-
-app.get('/searchTutorials/:title', async (req, res) =>{
-    try{
-        const Tutorial = await Tutorial.find({title: {$regex:`.*${req.params.title}.*`}});
-        res.send(Tutorial)
-    } catch (err) {
-        res.status(400).send(err.message);
-    }
-});
-
-
-
-
-
-
 app.get('/', (req, res) => {
     res.send('Hello');
 });
-
 
 app.listen(3001);
